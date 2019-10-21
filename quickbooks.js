@@ -21,6 +21,7 @@ module.exports = function(RED) {
                     var oauthTokenSecret = configuration.oauthTokenSecret;
                     var realmId = configuration.realmId;
                     var sandbox;
+                    var refreshToken = configuration.refreshToken;
                     
                     var method = config.method;
     
@@ -34,7 +35,7 @@ module.exports = function(RED) {
                         }
                     }
                     
-                    var qbo = new QuickBooksApi(consumerKey, consumerSecret, oauthToken, oauthTokenSecret, realmId, sandbox, true);
+                    var qbo = new QuickBooksApi(consumerKey, consumerSecret, oauthToken, oauthTokenSecret, realmId, sandbox, true,4,'2.0',refreshToken);
                     
                     var thisNode = this;
                     
@@ -71,6 +72,7 @@ module.exports = function(RED) {
         this.oauthTokenSecret = n.oauthTokenSecret;
         this.realmId = n.realmId;
         this.destination = n.destination;
+        this.refreshToken = n.refreshToken;
     }
     
     RED.nodes.registerType("quickbooks",Quickbooks);
